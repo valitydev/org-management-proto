@@ -1,0 +1,16 @@
+# general
+log
+/_build/
+/_checkouts/
+*~
+erl_crash.dump
+.tags*
+*.sublime-workspace
+.edts
+.DS_Store
+/.idea/
+*.beam
+rebar3.crashdump
+/src/*_thrift.erl
+/include/*_thrift.hrl
+target

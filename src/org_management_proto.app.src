@@ -1,0 +1,12 @@
+{application, org_management_proto, [
+    {description, "Organization Management service protocols"},
+    {vsn, "1.0.0"},
+    {applications, [
+        kernel,
+        stdlib,
+        bouncer_proto
+    ]},
+    {maintainers, [
+        "Andrey Mayorov <a.mayorov@rbkmoney.com>"
+    ]}
+]}.
