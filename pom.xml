@@ -59,9 +59,8 @@
         </dependency>
         <dependency>
             <groupId>dev.vality</groupId>
-            <artifactId>damsel</artifactId>
-            <version>1.538-5addc41</version>
-            <scope>provided</scope>
+            <artifactId>bouncer-proto</artifactId>
+            <version>1.30-3b5927d</version>
         </dependency>
     </dependencies>
 
