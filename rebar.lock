@@ -1,4 +1,4 @@
 [{<<"bouncer_proto">>,
-  {git,"git@github.com:rbkmoney/bouncer-proto.git",
-       {ref,"97dcad6f2f2706f269188722bc2419246d38823b"}},
+  {git,"https://github.com/valitydev/bouncer-proto",
+       {ref,"3b5927d4ee59983e855f87ddaee2aac4deeae0fe"}},
   0}].
