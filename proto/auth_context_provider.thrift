@@ -1,5 +1,5 @@
 namespace java dev.vality.orgmanagement
-namespace erlang orgmgmt
+namespace erlang orgmgmt.authctx_provider
 
 include "domain.thrift"
 include "proto/context.thrift"
