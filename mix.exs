@@ -22,7 +22,7 @@ defmodule OrgManagementProto.MixProject do
     [
       {:bouncer_proto, git: "https://github.com/valitydev/bouncer-proto.git", branch: "master"},
       {:thrift, git: "https://github.com/pinterest/elixir-thrift", branch: "master"},
-      {:woody_ex, git: "https://github.com/valitydev/woody_ex.git", branch: "ft/thrift-elixir"}
+      {:woody_ex, git: "https://github.com/valitydev/woody_ex.git", branch: "master"}
     ]
   end
 
