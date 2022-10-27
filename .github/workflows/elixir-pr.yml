@@ -1,0 +1,31 @@
+name: Elixir CI Checks
+
+on:
+  push:
+    branches:
+      - "master"
+      - "epic/**"
+  pull_request:
+    branches: ["**"]
+
+env:
+  OTP_VERSION: 25
+  ELIXIR_VERSION: 1.14
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup elixir
+        uses: erlef/setup-beam@v1
+        with:
+          elixir-version: ${{ env.ELIXIR_VERSION }}
+          otp-version: ${{ env.OTP_VERSION }}
+      - name: Install Mix Dependencies
+        run: |
+          mix local.rebar --force
+          mix local.hex --force
+          mix deps.get
+      - name: Compile
+        run: mix compile

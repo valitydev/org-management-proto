@@ -13,4 +13,12 @@ erl_crash.dump
 rebar3.crashdump
 /src/*_thrift.erl
 /include/*_thrift.hrl
-target
+/cover/
+/deps/
+/doc/
+/.fetch
+erl_crash.dump
+*.ez
+/tmp/
+/lib/
+/target/
