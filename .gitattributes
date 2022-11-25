@@ -1,0 +1,3 @@
+rebar.config linguist-detectable=false
+mix.exs linguist-detectable=false
+mix.lock linguist-detectable=false
