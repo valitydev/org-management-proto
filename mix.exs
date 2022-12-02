@@ -13,7 +13,7 @@ defmodule OrgManagementProto.MixProject do
       thrift: [
         files: Path.wildcard("proto/*.thrift"),
         include_paths: [bouncer_proto_path],
-        skip_codegen_files: Path.wildcard(Path.join([bouncer_proto_path, "proto" ,"*.thrift"]))
+        skip_codegen_files: Path.wildcard(Path.join([bouncer_proto_path, "proto", "*.thrift"]))
       ]
     ]
   end
