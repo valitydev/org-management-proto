@@ -2,6 +2,7 @@ defmodule OrgManagementProto.MixProject do
   use Mix.Project
 
   def project do
+    bouncer_proto_path = Path.join(base_deps_path(), "bouncer_proto")
     [
       app: :org_management_proto,
       version: "0.1.0",
@@ -11,7 +12,8 @@ defmodule OrgManagementProto.MixProject do
       compilers: [:thrift, :woody | Mix.compilers],
       thrift: [
         files: Path.wildcard("proto/*.thrift"),
-        include_paths: [Path.join(base_deps_path(), "bouncer_proto")]
+        include_paths: [bouncer_proto_path],
+        skip_codegen_files: Path.wildcard(Path.join([bouncer_proto_path, "proto", "*.thrift"]))
       ]
     ]
   end
@@ -21,7 +23,7 @@ defmodule OrgManagementProto.MixProject do
   defp deps do
     [
       {:bouncer_proto, git: "https://github.com/valitydev/bouncer-proto.git", branch: "master"},
-      {:thrift, git: "https://github.com/pinterest/elixir-thrift", branch: "master"},
+      {:thrift, git: "https://github.com/valitydev/elixir-thrift", branch: "master"},
       {:woody_ex, git: "https://github.com/valitydev/woody_ex.git", branch: "master"}
     ]
   end
