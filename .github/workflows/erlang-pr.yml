@@ -1,21 +1,17 @@
-name: Erlang CI Checks
+name: Erlang build
 
 on:
-  push:
-    branches:
-      - 'master'
-      - 'epic/**'
   pull_request:
-    branches: ['**']
+    branches:
+      - "*"
 
 jobs:
-  run:
-    name: Run checks
+  build:
     uses: valitydev/erlang-workflows/.github/workflows/erlang-simple-build.yml@v1
     with:
       otp-version: 24
-      rebar-version: 3.18
-      thrift-version: 0.14.2.3
+      rebar-version: 3
       use-thrift: true
+      thrift-version: 0.14.2.3
       run-eunit: false
       run-common-test: false
