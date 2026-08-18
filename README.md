@@ -1,3 +1,6 @@
+<!-- markdownlint-configure-file {"MD013":{"tables":false}} -->
+<!-- markdownlint-disable MD043 -->
+
 # org-management-proto
 
 Thrift-контракты сервиса управления организациями.
