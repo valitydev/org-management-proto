@@ -2,7 +2,7 @@
   "name": "@vality/org-management-proto",
   "version": "0.1.0",
   "scripts": {
-    "codegen": "thrift-codegen --i ./proto --n admin_management"
+    "codegen": "thrift-codegen --i ./proto ./node_modules/@vality/bouncer-proto --n admin_management"
   },
   "publishConfig": {
     "access": "public",
@@ -48,6 +48,7 @@
   "license": "Apache-2.0",
   "homepage": "https://github.com/valitydev/org-management-proto#readme",
   "devDependencies": {
+    "@vality/bouncer-proto": "github:valitydev/bouncer-proto#ft/gen-frontend",
     "@vality/thrift-codegen": "^3.0.0"
   }
 }
