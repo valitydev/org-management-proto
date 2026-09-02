@@ -22,3 +22,8 @@ erl_crash.dump
 /tmp/
 /lib/
 /target/
+
+# frontend
+node_modules
+clients
+dist
