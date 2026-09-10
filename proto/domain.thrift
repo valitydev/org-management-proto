@@ -53,14 +53,18 @@ struct RoleAssignment {
     2: optional RoleScope scope
 }
 
-/**
- * Участник организации с его действующими назначениями ролей в ней.
- */
-struct Member {
+struct User {
     1: required UserID id
     2: optional string email
+}
+
+/**
+ * Участник организации: пользователь и его действующие назначения ролей в ней.
+ */
+struct Member {
+    1: required User user
     /** Только активные назначения в этой организации. Может быть пустым. */
-    3: required list<MemberRole> roles
+    2: required list<MemberRole> roles
 }
 
 /** Роль, доступная в организации для назначения её участникам. */
