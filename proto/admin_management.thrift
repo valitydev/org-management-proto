@@ -19,6 +19,9 @@ exception RoleNotFound {}
 /** Приглашение не существует либо не относится к указанной организации. */
 exception InvitationNotFound {}
 
+/** Пользователь не существует. */
+exception UnknownUser {}
+
 /** Организация с указанным party_id уже существует. */
 exception PartyAlreadyBound {}
 
@@ -81,6 +84,18 @@ struct ListMembersRequest {
 
 struct ListMembersResult {
     1: required list<domain.Member> members
+    2: optional domain.ContinuationToken continuation_token
+}
+
+struct ListUsersRequest {
+    1: optional i32 limit
+    2: optional domain.ContinuationToken continuation_token
+    /** Точное совпадение email; если не указан, фильтрация по email не применяется. */
+    3: optional string email
+}
+
+struct ListUsersResult {
+    1: required list<domain.User> users
     2: optional domain.ContinuationToken continuation_token
 }
 
@@ -166,6 +181,14 @@ service AdminManagement {
     domain.Organization ActivateOrganization(1: domain.OrganizationID organization_id) throws (
         1: OrganizationNotFound ex1,
         2: InvalidOrganizationState ex2
+    )
+
+    /** Получить страницу пользователей. */
+    ListUsersResult ListUsers(1: ListUsersRequest request)
+
+    /** Получить пользователя по идентификатору. */
+    domain.User GetUser(1: domain.UserID user_id) throws (
+        1: UnknownUser ex1
     )
 
     domain.Member GetMember(
