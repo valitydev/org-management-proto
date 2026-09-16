@@ -13,9 +13,6 @@ exception MemberNotFound {}
 /** Назначение роли не найдено в организации. */
 exception MemberRoleNotFound {}
 
-/** Роль не найдена в каталоге ролей организации. */
-exception RoleNotFound {}
-
 /** Приглашение не существует либо не относится к указанной организации. */
 exception InvitationNotFound {}
 
@@ -36,8 +33,8 @@ exception InvalidInvitationState {
 }
 
 /**
- * Запрос не прошёл валидацию: некорректный JSON в metadata, пустое имя, либо role_id или
- * scope_id, которых нет в каталоге ролей организации.
+ * Запрос не прошёл валидацию: некорректный JSON в metadata, пустое имя, пустой role_id
+ * или scope_id.
  */
 exception InvalidRequest {
     1: required string reason
@@ -97,14 +94,6 @@ struct ListUsersRequest {
 struct ListUsersResult {
     1: required list<domain.User> users
     2: optional domain.ContinuationToken continuation_token
-}
-
-/** Роль, доступная для назначения в организации. */
-struct SetOrganizationRoleRequest {
-    1: required domain.RoleID role_id
-    2: required string name
-    /** Допустимые значения RoleScope.scope_id при назначении этой роли. */
-    3: required list<string> scope_ids
 }
 
 struct AssignMemberRoleRequest {
@@ -227,7 +216,7 @@ service AdminManagement {
         2: MemberNotFound ex2
     )
 
-    /** Назначить роль участнику. role_id и scope должны существовать в каталоге ролей. */
+    /** Назначить роль участнику.  */
     domain.MemberRole AssignMemberRole(
         1: domain.OrganizationID organization_id,
         2: domain.UserID user_id,
@@ -250,33 +239,6 @@ service AdminManagement {
         1: OrganizationNotFound ex1,
         2: MemberNotFound ex2,
         3: MemberRoleNotFound ex3
-    )
-
-    domain.OrganizationRole GetOrganizationRole(
-        1: domain.OrganizationID organization_id,
-        2: domain.RoleID role_id
-    ) throws (
-        1: OrganizationNotFound ex1,
-        2: RoleNotFound ex2
-    )
-
-    list<domain.OrganizationRole> ListOrganizationRoles(
-        1: domain.OrganizationID organization_id
-    ) throws (
-        1: OrganizationNotFound ex1
-    )
-
-    /**
-     * Создать либо обновить роль в каталоге ролей организации. Каталог задаёт, какие роли
-     * и области действия допустимы в AssignMemberRole и CreateInvitation.
-     * Удаление ролей не предусмотрено: неактуальную роль просто перестают назначать.
-     */
-    domain.OrganizationRole SetOrganizationRole(
-        1: domain.OrganizationID organization_id,
-        2: SetOrganizationRoleRequest request
-    ) throws (
-        1: OrganizationNotFound ex1,
-        2: InvalidRequest ex2
     )
 
     /**
