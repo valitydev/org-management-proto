@@ -55,8 +55,6 @@ Thrift-контракты сервиса управления организац
 | `RemoveMember`          | `organization_id`, `user_id`                      | без данных                | Исключить пользователя из организации.                                                       |
 | `AssignMemberRole`      | `organization_id`, `user_id`, `role_id`, `scope?` | `MemberRole`              | Выдать участнику роль во всей организации или в указанной области.                           |
 | `RemoveMemberRole`      | `organization_id`, `user_id`, `member_role_id`    | без данных                | Снять конкретное назначение роли.                                                            |
-| `GetOrganizationRole`   | `organization_id`, `role_id`                      | `OrganizationRole`        | Получить роль, доступную для назначения в организации.                                       |
-| `ListOrganizationRoles` | `organization_id`                                 | список `OrganizationRole` | Получить все роли, которые можно назначать участникам организации.                           |
 
 `Member` — это `User` плюс список его назначений ролей в организации. Каждое
 назначение `MemberRole` имеет собственный `id`, идентификатор роли и
@@ -64,8 +62,9 @@ Thrift-контракты сервиса управления организац
 
 Без `scope` роль действует на всю организацию. Если права нужно ограничить,
 `scope_id` задаёт тип области (например, `Shop`), а `resource_id` — конкретный
-ресурс. `OrganizationRole.scope_ids` показывает, в каких областях роль можно
-назначать.
+ресурс. Роли не сверяются с каталогом организации: набор ролей и разрешённых им
+операций задаётся политиками bouncer
+([roles/data.yaml](https://github.com/valitydev/bouncer-policies/blob/master/policies/service/authz/roles/data.yaml)).
 
 ### Приглашения
 

@@ -67,14 +67,6 @@ struct Member {
     2: required list<MemberRole> roles
 }
 
-/** Роль, доступная в организации для назначения её участникам. */
-struct OrganizationRole {
-    1: required RoleID id
-    2: required string name
-    /** Допустимые значения RoleScope.scope_id при назначении этой роли. */
-    3: required list<string> scope_ids
-}
-
 enum InvitationStatus {
     pending = 1,
     accepted = 2,
