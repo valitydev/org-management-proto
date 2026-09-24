@@ -100,4 +100,5 @@ struct Organization {
     5: required Timestamp created_at
     6: required OrganizationStatus status
     7: optional JsonObject metadata
+    8: optional set<string> allowed_ip
 }
