@@ -47,6 +47,7 @@ struct CreateOrganizationRequest {
     2: required domain.UserID owner_id
     3: required string name
     4: optional domain.JsonObject metadata
+    5: optional set<string> allowed_ips
 }
 
 struct ListOrganizationsRequest {
@@ -62,6 +63,7 @@ struct ModifyOrganizationRequest {
     /** Неуказанные поля остаются без изменений. */
     1: optional string name
     2: optional domain.JsonObject metadata
+    3: optional set<string> allowed_ips
 }
 
 struct ListOrganizationsResult {
