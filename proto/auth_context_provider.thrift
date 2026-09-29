@@ -19,7 +19,7 @@ service AuthContextProvider {
      * Предполагается, что контекст будет содержать информацию о пользователе, которую можно
      * уместить в [`context_v1.User`][1].
      *
-     * [1]: https://github.com/valitydev/bouncer-proto/blob/master/proto/context_v1.thrift#L112
+     * [1]: https://github.com/valitydev/bouncer-proto/blob/9973bd8/proto/context_v1.thrift#L112
      */
     context.ContextFragment GetUserContext (1: domain.UserID id) throws (
         1: UserNotFound ex1
@@ -31,7 +31,7 @@ service AuthContextProvider {
      * Предполагается, что контекст будет содержать информацию о участнике, которую можно
      * уместить в [`context_v1.Party`][1].
      *
-     * [1]: https://github.com/valitydev/bouncer-proto/blob/master/proto/context_v1.thrift#L145
+     * [1]: https://github.com/valitydev/bouncer-proto/blob/9973bd8/proto/context_v1.thrift#L145
      */
     context.ContextFragment GetPartyContext (1: domain.PartyID id) throws (
         1: PartyNotFound ex1
