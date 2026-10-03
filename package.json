@@ -2,7 +2,7 @@
   "name": "@vality/org-management-proto",
   "version": "0.1.0",
   "scripts": {
-    "codegen": "thrift-codegen --i ./proto ./node_modules/@vality/bouncer-proto --n admin_management"
+    "codegen": "tsthrift-cli --i64 number --input proto --bundle --lower-case-methods --external @vality/bouncer-proto"
   },
   "publishConfig": {
     "access": "public",
@@ -12,34 +12,21 @@
     "type": "git",
     "url": "git+https://github.com/valitydev/org-management-proto.git"
   },
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
     },
     "./*": {
-      "import": {
-        "types": "./dist/*.d.mts",
-        "default": "./dist/*.mjs"
-      },
-      "require": {
-        "types": "./dist/*.d.ts",
-        "default": "./dist/*.js"
-      }
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "dist/*"
-      ]
-    }
+      "types": "./dist/*/index.d.mts",
+      "import": "./dist/*/index.mjs"
+    },
+    "./proto/*": "./proto/*",
+    "./package.json": "./package.json"
   },
   "files": [
     "dist",
@@ -47,8 +34,11 @@
   ],
   "license": "Apache-2.0",
   "homepage": "https://github.com/valitydev/org-management-proto#readme",
+  "dependencies": {
+    "@vality/bouncer-proto": "file:../bouncer-proto",
+    "@vality/tsthrift": "^0.2.0"
+  },
   "devDependencies": {
-    "@vality/bouncer-proto": "^0.1.0",
-    "@vality/thrift-codegen": "^3.0.0"
+    "@vality/tsthrift-cli": "^0.2.0"
   }
 }
