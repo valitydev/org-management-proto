@@ -25,5 +25,5 @@ erl_crash.dump
 
 # frontend
 node_modules
-clients
+generated
 dist
