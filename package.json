@@ -39,7 +39,7 @@
   "license": "Apache-2.0",
   "homepage": "https://github.com/valitydev/org-management-proto#readme",
   "dependencies": {
-    "@vality/bouncer-proto": "^0.1.1-73212ac.0",
+    "@vality/bouncer-proto": "latest",
     "@vality/tsthrift": "^0.2.0"
   },
   "devDependencies": {
